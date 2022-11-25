@@ -1,7 +1,7 @@
 const router = require("express").Router();
 const User = require("../models/Users");
 
-// Resister
+// Resister (Create User)
 router.post("/resister", async (req, res) => {
   try {
     const newUser = await new User({
