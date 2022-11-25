@@ -51,12 +51,12 @@ router.delete("/:id", async (req, res) => {
 // Follow a user
 router.put("/:id/follow", async (req, res) => {
   // userIdがparamsのidではない時＝自分のIdでない時＝相手のId(自分以外をfollowする)
-  if (req.bpdy.userId !== req.params.id) {
+  if (req.body.userId !== req.params.id) {
     // followする相手のIdを探しにく
     const user = await User.findById(req.params.id);
     // 自分のId
     const currentUser = await User.findById(req.body.userId);
-    // followする相手のfollowersの中に自分のIdが無かったらフォルーできる
+    // followする相手のfollowersの中に自分のIdが無かったらフォローできる
     if (!user.followers.includes(req.body.userId)) {
       await user.updateOne({
         $push: {
@@ -75,6 +75,33 @@ router.put("/:id/follow", async (req, res) => {
     }
   } else {
     return res.status(500).json("You can't follow yourself");
+  }
+});
+
+// Unfollow a user
+router.put("/:id/unfollow", async (req, res) => {
+  if (req.body.userId !== req.params.id) {
+    const user = await User.findById(req.params.id);
+    const currentUser = await User.findById(req.body.userId);
+
+    // Followする相手の中に私が含まれていたらフォローを外せる
+    if (user.followers.includes(req.body.userId)) {
+      await user.updateOne({
+        $pull: {
+          followers: req.body.userId,
+        },
+      });
+      await currentUser.updateOne({
+        $pull: {
+          followings: req.params.id,
+        },
+      });
+      return res.status(200).json("Succesfully unfollowed this user");
+    } else {
+      return res.status(403).json("You can't  unfollow this user");
+    }
+  } else {
+    return res.status(500).json("You can't unfollow yourself");
   }
 });
 
