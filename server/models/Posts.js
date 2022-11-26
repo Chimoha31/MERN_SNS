@@ -14,6 +14,7 @@ const PostSchema = new mongoose.Schema(
       type: String,
     },
     likes: {
+      // ここでは、いいねが押されたuserを格納する(likeではない)
       type: Array,
       default: [],
     },
