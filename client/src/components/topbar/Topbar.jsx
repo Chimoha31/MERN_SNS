@@ -1,8 +1,8 @@
 import React from "react";
-import "./Topbar.css";
+import "../topbar/Topbar.css";
 import SearchIcon from "@mui/icons-material/Search";
 import Chat from "@mui/icons-material/Chat";
-import NotificationsIcon from "@mui/icons-material/Notifications;"
+import NotificationsIcon from '@mui/icons-material/Notifications';
 
 const Topbar = () => {
   return (
