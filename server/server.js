@@ -3,6 +3,7 @@ const app = express();
 const mongoose = require("mongoose");
 require("dotenv").config();
 const PORT = 8000;
+
 app.use(express.json());
 
 // Test
@@ -30,4 +31,5 @@ app.use("/api/auth", authRouter);
 app.use("/api/users", userRouter);
 app.use("/api/posts", postRouter);
 
+// Localサーバーを立ち上げ
 app.listen(PORT, () => console.log("Server is running 😎"));
