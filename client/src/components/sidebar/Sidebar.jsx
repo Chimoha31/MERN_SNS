@@ -7,6 +7,8 @@ import Message from "@mui/icons-material/Message";
 import Bookmark from "@mui/icons-material/Bookmark";
 import PersonIcon from "@mui/icons-material/Person";
 import Settings from "@mui/icons-material/Settings";
+import CloseFriends from "../closeFriend/CloseFriends";
+import { Users } from "../../dummyData";
 
 const Sidebar = () => {
   return (
@@ -46,8 +48,9 @@ const Sidebar = () => {
 
         {/* Sidebar Friends */}
         <ul className="sidebarFriendsList">
-        
-         
+          {Users.map((user) => (
+            <CloseFriends user={user} key={user.id} />
+          ))}
         </ul>
       </div>
     </div>
