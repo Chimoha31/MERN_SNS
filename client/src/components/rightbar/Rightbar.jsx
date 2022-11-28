@@ -18,7 +18,11 @@ const Rightbar = () => {
         <ul className="rightbarFriendsList">
           <li className="rightbarFriend">
             <div className="rightbarProfileImgContainer">
-              <img src="/assets/person/icon01.jpg" alt="" className="rightbarOnlineFriendImg" />
+              <img
+                src="/assets/person/icon01.jpg"
+                alt=""
+                className="rightbarOnlineFriendImg"
+              />
               {/* Onlineの緑マーク用のspan */}
               <span className="rightbarOnline"></span>
             </div>
@@ -26,19 +30,48 @@ const Rightbar = () => {
           </li>
           <li className="rightbarFriend">
             <div className="rightbarProfileImgContainer">
-              <img src="/assets/person/person01.jpg" alt="" className="rightbarOnlineFriendImg" />
+              <img
+                src="/assets/person/person01.jpg"
+                alt=""
+                className="rightbarOnlineFriendImg"
+              />
               <span className="rightbarOnline"></span>
             </div>
             <span className="rightbarUsername">Teddy M</span>
           </li>
           <li className="rightbarFriend">
             <div className="rightbarProfileImgContainer">
-              <img src="/assets/person/person02.jpg" alt="" className="rightbarOnlineFriendImg" />
+              <img
+                src="/assets/person/person02.jpg"
+                alt=""
+                className="rightbarOnlineFriendImg"
+              />
               <span className="rightbarOnline"></span>
             </div>
             <span className="rightbarUsername">Teddy M</span>
           </li>
         </ul>
+
+        {/* Promotion */}
+        <p className="promotionTitle">Advertisement of Promotion</p>
+        <img
+          src="/assets/promotion/shopping.jpg"
+          alt=""
+          className="rightbarPromotionImg"
+        />
+        <p className="promotionName">Shopping</p>
+        <img
+          src="/assets/promotion/car.jpg"
+          alt=""
+          className="rightbarPromotionImg"
+        />
+        <p className="promotionName">Car Store</p>
+        <img
+          src="/assets/promotion/company.jpg"
+          alt=""
+          className="rightbarPromotionImg"
+        />
+        <p className="promotionName">Company</p>
       </div>
     </div>
   );
