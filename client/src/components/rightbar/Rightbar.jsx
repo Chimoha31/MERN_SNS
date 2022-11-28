@@ -1,5 +1,7 @@
 import React from "react";
 import "../rightbar/Rightbar.css";
+import { Users } from "../../dummyData";
+import Online from "../online/Online";
 
 const Rightbar = () => {
   return (
@@ -16,40 +18,9 @@ const Rightbar = () => {
         {/* Online Friends */}
         <h4 className="rightbarTitle">Online Friends</h4>
         <ul className="rightbarFriendsList">
-          <li className="rightbarFriend">
-            <div className="rightbarProfileImgContainer">
-              <img
-                src="/assets/person/icon01.jpg"
-                alt=""
-                className="rightbarOnlineFriendImg"
-              />
-              {/* Onlineの緑マーク用のspan */}
-              <span className="rightbarOnline"></span>
-            </div>
-            <span className="rightbarUsername">Teddy M</span>
-          </li>
-          <li className="rightbarFriend">
-            <div className="rightbarProfileImgContainer">
-              <img
-                src="/assets/person/person01.jpg"
-                alt=""
-                className="rightbarOnlineFriendImg"
-              />
-              <span className="rightbarOnline"></span>
-            </div>
-            <span className="rightbarUsername">Teddy M</span>
-          </li>
-          <li className="rightbarFriend">
-            <div className="rightbarProfileImgContainer">
-              <img
-                src="/assets/person/person02.jpg"
-                alt=""
-                className="rightbarOnlineFriendImg"
-              />
-              <span className="rightbarOnline"></span>
-            </div>
-            <span className="rightbarUsername">Teddy M</span>
-          </li>
+          {Users.map((user) => (
+            <Online user={user} key={user.id} />
+          ))}
         </ul>
 
         {/* Promotion */}

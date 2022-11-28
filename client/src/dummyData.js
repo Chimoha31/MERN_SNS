@@ -1,7 +1,8 @@
+// Users
 export const Users = [
   {
     id: 1,
-    profilePicture: "assets/person/ison.01.jpg",
+    profilePicture: "assets/person/icon01.jpg",
     username: "Teddy Maekawa",
   },
   {
@@ -26,6 +27,7 @@ export const Users = [
   },
 ];
 
+// Posts
 export const Posts = [
   {
     id: 1,
