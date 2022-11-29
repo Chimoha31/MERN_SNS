@@ -1,4 +1,4 @@
-.login {
+.resister {
   width: 100vw;
   height: 100vh;
   background-color: #f0f2f5;
@@ -7,35 +7,35 @@
   justify-content: center;
 }
 
-.loginWrapper {
+.resisterWrapper {
   /* background-color: tomato; */
   width: 70%;
   height: 70%;
   display: flex;
 }
 
-.loginLeft,
-.loginRight {
+.resisterLeft,
+.resisterRight {
   flex: 1;
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
 
-.loginLogo {
+.resisterLogo {
   font-size: 50px;
   font-weight: 800;
   color: #41428b;
   margin-bottom: 10px;
 }
 
-.loginDesc {
+.resisterDesc {
   font-size: 24px;
 }
 
-/* Login Form */
-.loginBox {
-  height: 350px;
+/* resister Form */
+.resisterBox {
+  height: 400px;
   padding: 20px;
   background-color: #fff;
   border-radius: 10px;
@@ -45,14 +45,14 @@
     box-shadow: 0px 0px 18px -7px #787fb5;
 }
 
-.loginMsg {
+.resisterMsg {
   text-align: center;
   font-weight: 550;
   font-size: 18px;
   margin-bottom : 20px;
 }
 
-.loginInput {
+.resisterInput {
   height: 50px;
   border-radius: 10px;
   border: 1px solid grey;
@@ -60,11 +60,11 @@
   padding-left: 20px;
   margin-bottom: 20px;
 }
-.loginInput:focus {
+.resisterInput:focus {
   outline: none;
 }
 
-.loginButton {
+.resisterButton {
   height: 50px;
   border-radius: 10px;
   border: none;
@@ -75,14 +75,14 @@
   cursor: pointer;
 }
 
-.loginForgot {
+.resisterForgot {
   text-align: center;
   color: #41428b;
   margin: 15px 0;
 }
 
-.loginResisterButton {
-  width: 60%;
+.loginButton {
+  width: 50%;
   height: 50px;
   align-self: center;
   border-radius: 10px;
@@ -92,4 +92,5 @@
   font-size: 20px;
   font-weight: 500;
   cursor: pointer;
+  margin-top: 15px;
 }

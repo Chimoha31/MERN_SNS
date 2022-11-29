@@ -1,14 +1,16 @@
 import React from "react";
-import Login from "./pages/login/Login";
-// import Home from "./pages/home/Home";
+import Home from "./pages/home/Home";
 // import Profile from "./pages/profile/Profile";
+// import Login from "./pages/login/Login";
+// import Resister from "./pages/resister/Resister";
 
 const App = () => {
   return (
     <>
-      {/* <Home /> */}
+      <Home />
       {/* <Profile /> */}
-      <Login />
+      {/* <Login /> */}
+      {/* <Resister /> */}
     </>
   );
 };
