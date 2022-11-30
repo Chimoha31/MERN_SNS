@@ -6,6 +6,8 @@ import Timeline from "../../components/timeline/Timeline";
 import Rightbar from "../../components/rightbar/Rightbar";
 
 const Profile = () => {
+  const PUBLIC_FOLDER = process.env.REACT_APP_PUBLIC_FOLDER
+
   return (
     <>
       <Topbar />
@@ -16,12 +18,12 @@ const Profile = () => {
             {/* Profile Cover */}
             <div className="profileCover">
               <img
-                src="/assets/post/Tokyo01.jpg"
+                src={PUBLIC_FOLDER + "/post/Tokyo01.jpg"}
                 alt=""
                 className="profileCoverImg"
               />
               <img
-                src="/assets/person/icon01.jpg"
+                src={PUBLIC_FOLDER + "/person/icon01.jpg"}
                 alt=""
                 className="profileCoverUserImg"
               />
