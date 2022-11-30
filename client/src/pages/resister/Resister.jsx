@@ -19,7 +19,7 @@ const Resister = () => {
             <input type="text" className="resisterInput" placeholder="Confirm Password" />
             <button className="resisterButton">Sign Up</button>
             {/* <span className="resisterForgot">You already have an account ?</span> */}
-            <button className="loginButton">Login here</button>
+            <button className="loginResisterButton">Login here</button>
           </div>
         </div>
       </div>

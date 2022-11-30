@@ -9,6 +9,7 @@ import PersonIcon from "@mui/icons-material/Person";
 import Settings from "@mui/icons-material/Settings";
 import CloseFriends from "../closeFriend/CloseFriends";
 import { Users } from "../../dummyData";
+import { Link } from "react-router-dom";
 
 const Sidebar = () => {
   return (
@@ -17,7 +18,9 @@ const Sidebar = () => {
         <ul className="sidebarList">
           <li className="sidebarListItem">
             <Home className="sidebarIcon" />
-            <span className="sidebarListItemText">Home</span>
+            <Link to="/" style={{ textDecoration: "none", color: "black" }}>
+              <span className="sidebarListItemText">Home</span>
+            </Link>
           </li>
           <li className="sidebarListItem">
             <Search className="sidebarIcon" />
@@ -37,7 +40,12 @@ const Sidebar = () => {
           </li>
           <li className="sidebarListItem">
             <PersonIcon className="sidebarIcon" />
-            <span className="sidebarListItemText">Person</span>
+            <Link
+              to="/profile/1"
+              style={{ textDecoration: "none", color: "black" }}
+            >
+              <span className="sidebarListItemText">Profile</span>
+            </Link>
           </li>
           <li className="sidebarListItem">
             <Settings className="sidebarIcon" />
