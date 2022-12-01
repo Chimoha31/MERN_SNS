@@ -1,12 +1,25 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./Profile.css";
 import Topbar from "../../components/topbar/Topbar";
 import Sidebar from "../../components/sidebar/Sidebar";
 import Timeline from "../../components/timeline/Timeline";
 import Rightbar from "../../components/rightbar/Rightbar";
+import axios from "axios";
+import { useParams } from "react-router-dom";
 
 const Profile = () => {
-  const PUBLIC_FOLDER = process.env.REACT_APP_PUBLIC_FOLDER
+  const PUBLIC_FOLDER = process.env.REACT_APP_PUBLIC_FOLDER;
+  const params = useParams().username;
+  const [user, setUser] = useState({});
+
+  useEffect(() => {
+    const fetchUser = async () => {
+      const res = await axios.get(`/users?username=${params}`);
+      console.log(res);
+      setUser(res.data);
+    };
+    fetchUser();
+  }, []);
 
   return (
     <>
@@ -31,15 +44,15 @@ const Profile = () => {
 
             {/* Profile Information */}
             <div className="profileInfo">
-              <h4 className="profileInfoName">Teddy Maekawa</h4>
-              <span className="profileInfoDesc">I'm a Pretty Puppy</span>
+              <h4 className="profileInfoName">{user.username}</h4>
+              <span className="profileInfoDesc">{user.description}</span>
             </div>
           </div>
 
           {/*  */}
           <div className="profileRightBottom">
-            <Timeline username="Chiho" />
-            <Rightbar profile />
+            <Timeline username={params} />
+            <Rightbar user={user} />
           </div>
         </div>
       </div>

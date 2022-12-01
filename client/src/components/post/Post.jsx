@@ -2,8 +2,9 @@ import React, { useEffect, useState } from "react";
 import "../post/Post.css";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import axios from "axios";
+import { format } from "timeago.js";
+import { Link } from "react-router-dom";
 // import { Users } from "../../dummyData";
-import { format } from 'timeago.js';
 
 const Post = ({ post }) => {
   const PUBLIC_FOLDER = process.env.REACT_APP_PUBLIC_FOLDER;
@@ -18,15 +19,15 @@ const Post = ({ post }) => {
   };
 
   const fetchUser = async () => {
-    const response = await axios.get(`/users/${post.userId}`);
-    console.log(response.data);
+    const response = await axios.get(`/users?userId=${post.userId}`);
+    // console.log(response.data);
     setUser(response.data);
   };
 
   useEffect(() => {
     fetchUser();
     // eslint-disable-next-line
-  }, []);
+  }, [post.userId]);
 
   return (
     <div className="post">
@@ -34,10 +35,16 @@ const Post = ({ post }) => {
         {/* Top */}
         <div className="postTop">
           <div className="postTopLeft">
-            <img src={user.profilePicture || PUBLIC_FOLDER + "/person/noAvatar.png"} alt="" className="postProfileImg" />
-            <span className="postUsername">
-            {user.username}
-            </span>
+            <Link to={`/profile/${user.username}`}>
+              <img
+                src={
+                  user.profilePicture || PUBLIC_FOLDER + "/person/noAvatar.png"
+                }
+                alt=""
+                className="postProfileImg"
+              />
+            </Link>
+            <span className="postUsername">{user.username}</span>
             <span className="postDate">{format(post.createdAt)}</span>
           </div>
           <div className="postTopRight">

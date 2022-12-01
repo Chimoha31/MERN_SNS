@@ -2,9 +2,26 @@ const router = require("express").Router();
 const User = require("../models/Users");
 
 // Get
-router.get("/:id", async (req, res) => {
+// router.get("/:id", async (req, res) => {
+//   try {
+//     const user = await User.findById(req.params.id);
+//     // passwordとupdatedAtは第三者に見られない様に下記のように取り出し、分割代入のothersだけ取得する様にする
+//     const { password, updatedAt, ...others } = user._doc;
+//     return res.status(200).json(others);
+//   } catch (err) {
+//     return res.status(500).json(err);
+//   }
+// });
+
+// queryでGet profile user
+router.get("/", async (req, res) => {
+  const userId = req.query.userId;
+  const username = req.query.username;
   try {
-    const user = await User.findById(req.params.id);
+    const user = userId
+      ? await User.findById(userId)
+      : await User.findOne({ username: username });
+
     // passwordとupdatedAtは第三者に見られない様に下記のように取り出し、分割代入のothersだけ取得する様にする
     const { password, updatedAt, ...others } = user._doc;
     return res.status(200).json(others);
