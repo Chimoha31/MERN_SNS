@@ -25,10 +25,10 @@ router.get("/:id", async (req, res) => {
 });
 
 // Get All Posts ("/timelineとすると上の"/:id"と識別され、予期せぬエラーが起きるので以下のendpointにする)
-router.get("/timeline/all", async (req, res) => {
+router.get("/timeline/:userId", async (req, res) => {
   try {
     // 全ての投稿＝> ①自分の投稿
-    const currentUser = await User.findById(req.body.userId);
+    const currentUser = await User.findById(req.params.userId);
     const userPosts = await Post.find({ userId: currentUser._id });
     // + ②自分がフォローしている友達の投稿
     const friendPosts = await Promise.all(
