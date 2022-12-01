@@ -5,21 +5,29 @@ import Share from "../share/Share";
 import "../timeline/Timeline.css";
 import axios from "axios";
 
-const Timeline = () => {
+const Timeline = ({ username }) => {
   const [posts, setPosts] = useState([]);
 
-  const fetchPosts = async () => {
-    const response = await axios.get(
-      "/posts/timeline/637ed0cec8312652068c37d6"
-    );
-    console.log(response.data);
-    setPosts(response.data);
-  };
-
+  // useEffect(() => {
+  //   const fetchPosts = async () => {
+  //     const response = username
+  //       ? await axios.get(`/post/profile/${username}`)
+  //       : await axios.get("/posts/timeline/637ed0cec8312652068c37d6");
+  //     console.log(response.data);
+  //     setPosts(response.data);
+  //   };
+  //   fetchPosts();
+  // }, []);
   useEffect(() => {
+    const fetchPosts = async () => {
+      const res = username
+        ? await axios.get(`/posts/profile/${username}`) //プロフィールの場合
+        : await axios.get(`/posts/timeline/637ed0cec8312652068c37d6`); //ホームの場合
+
+      setPosts(res.data)
+    };
     fetchPosts();
-    // eslint-disable-next-lin
-  }, []);
+  }, [username]);
 
   return (
     <div className="timeline">

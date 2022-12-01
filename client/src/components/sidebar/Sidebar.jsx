@@ -41,7 +41,7 @@ const Sidebar = () => {
           <li className="sidebarListItem">
             <PersonIcon className="sidebarIcon" />
             <Link
-              to="/profile/1"
+              to="/profile/Chiho"
               style={{ textDecoration: "none", color: "black" }}
             >
               <span className="sidebarListItemText">Profile</span>

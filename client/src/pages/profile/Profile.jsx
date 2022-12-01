@@ -38,7 +38,7 @@ const Profile = () => {
 
           {/*  */}
           <div className="profileRightBottom">
-            <Timeline />
+            <Timeline username="Chiho" />
             <Rightbar profile />
           </div>
         </div>

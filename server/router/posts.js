@@ -42,6 +42,19 @@ router.get("/timeline/:userId", async (req, res) => {
   }
 });
 
+// Profile専用のTimeline(そのuserのpostしか見れない状態)
+router.get("/profile/:username", async (req, res) => {
+  try {
+    // 名前によって識別するからfindOne()を使用。findOne()場合プロパティの設定が必要{}。
+    const user = await User.findOne({username: req.params.username});
+    const posts = await Post.find({ userId: user._id });
+    return res.status(200).json(posts);
+  } catch (err) {
+    return res.status(500).json(err);
+  }
+});
+
+
 // Update Post
 router.put("/:id", async (req, res) => {
   try {
