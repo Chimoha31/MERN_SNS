@@ -1,7 +1,18 @@
-import React from "react";
+import React, { useRef } from "react";
 import "./Login.css";
 
 const Login = () => {
+  const email = useRef();
+  const password = useRef();
+  console.log(email);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(email.current.value)
+    console.log(password.current.value)
+
+  }
+
   return (
     <div className="login">
       <div className="loginWrapper">
@@ -11,16 +22,27 @@ const Login = () => {
         </div>
         {/* Login Form */}
         <div className="loginRight">
-          <div className="loginBox">
+          <form className="loginBox" onSubmit={(e) => handleSubmit(e)}>
             <p className="loginMsg">Login here</p>
-            <input type="text" className="loginInput" placeholder="Email" />
-            <input type="text" className="loginInput" placeholder="Password" />
+            <input
+              type="email"
+              className="loginInput"
+              placeholder="Email"
+              required
+              ref={email}
+            />
+            <input
+              type="password"
+              className="loginInput"
+              placeholder="Password"
+              required
+              minLength="3"
+              ref={password}
+            />
             <button className="loginButton">Login</button>
             <span className="loginForgot">Forgot your password ?</span>
-            <button className="loginResisterButton">
-              Create account
-            </button>
-          </div>
+            <button className="loginResisterButton">Create account</button>
+          </form>
         </div>
       </div>
     </div>

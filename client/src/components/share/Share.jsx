@@ -6,12 +6,14 @@ import FaceIcon from "@mui/icons-material/Face";
 import AnalyticsIcon from "@mui/icons-material/Analytics";
 
 const Share = () => {
+  const PUBLIC_FOLDER = process.env.REACT_APP_PUBLIC_FOLDER;
   return (
     <div className="share">
       <div className="shareWrapper">
         <div className="shareTop">
           <img
-            src="/assets/person/icon01.jpg"
+            // src={user.profilePicture || PUBLIC_FOLDER + "/person/noAvater/png"}
+            src={PUBLIC_FOLDER + "/person/noAvatar.png"}
             alt=""
             className="shareProfileImg"
           />
