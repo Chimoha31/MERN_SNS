@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useRef } from "react";
 import "./Resister.css";
 
 const Resister = () => {
+  const ref = useRef();
+
   return (
     <div className="resister">
       <div className="resisterWrapper">
@@ -13,10 +15,22 @@ const Resister = () => {
         <div className="resisterRight">
           <div className="resisterBox">
             <p className="resisterMsg">Resister here</p>
-            <input type="text" className="resisterInput" placeholder="Username" />
+            <input
+              type="text"
+              className="resisterInput"
+              placeholder="Username"
+            />
             <input type="text" className="resisterInput" placeholder="Email" />
-            <input type="text" className="resisterInput" placeholder="Password" />
-            <input type="text" className="resisterInput" placeholder="Confirm Password" />
+            <input
+              type="text"
+              className="resisterInput"
+              placeholder="Password"
+            />
+            <input
+              type="text"
+              className="resisterInput"
+              placeholder="Confirm Password"
+            />
             <button className="resisterButton">Sign Up</button>
             {/* <span className="resisterForgot">You already have an account ?</span> */}
             <button className="loginResisterButton">Login here</button>
