@@ -31,12 +31,20 @@ const Profile = () => {
             {/* Profile Cover */}
             <div className="profileCover">
               <img
-                src={user.coverPicture || PUBLIC_FOLDER + "/post/Tokyo01.jpg"}
+                src={
+                  user.coverPicture
+                    ? PUBLIC_FOLDER + user.coverPicture
+                    : PUBLIC_FOLDER + "/post/Tokyo01.jpg"
+                }
                 alt=""
                 className="profileCoverImg"
               />
               <img
-                src={user.profilePicture || PUBLIC_FOLDER + "/person/noAvatar.png"}
+                src={
+                  user.profilePicture
+                    ? PUBLIC_FOLDER + user.profilePicture
+                    : PUBLIC_FOLDER + "/person/noAvatar.png"
+                }
                 alt=""
                 className="profileCoverUserImg"
               />

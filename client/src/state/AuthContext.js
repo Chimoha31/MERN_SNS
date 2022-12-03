@@ -9,7 +9,7 @@ const initialState = {
     username: "Chiho",
     email: "chiho@gmail.com",
     password: "12345",
-    profilePicture: "",
+    profilePicture: "/person/chihoPic.JPG",
     coverPicture: "",
     followers: [],
     followings: [],

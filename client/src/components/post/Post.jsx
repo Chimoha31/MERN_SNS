@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "../post/Post.css";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import axios from "axios";
 import { format } from "timeago.js";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../state/AuthContext";
 // import { Users } from "../../dummyData";
 
 const Post = ({ post }) => {
@@ -13,14 +14,22 @@ const Post = ({ post }) => {
   const [like, setLike] = useState(post.likes.length);
   const [isLiked, setIsLiked] = useState(false);
 
-  const handleLike = () => {
+  const { user: currentUser } = useContext(AuthContext);
+
+  const handleLike = async () => {
+    try {
+      // likeのAPIを叩いていく
+      // post._id=>どの投稿に、currentUser._id=>誰がいいねするか
+      await axios.put(`/posts/${post._id}/like`, { userId: currentUser._id });
+    } catch (err) {
+      console.log(err);
+    }
     setLike(isLiked ? like - 1 : like + 1);
     setIsLiked(!isLiked);
   };
 
   const fetchUser = async () => {
     const res = await axios.get(`/users?userId=${post.userId}`);
-    // console.log(res.data);
     setUser(res.data);
   };
 
