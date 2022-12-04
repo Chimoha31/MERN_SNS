@@ -15,6 +15,7 @@ app.get("/", (req, res) => {
 const authRouter = require("./router/auth");
 const userRouter = require("./router/users");
 const postRouter = require("./router/posts");
+const uploadRouter = require("./router/upload")
 
 // Connect MongoDB
 mongoose
@@ -30,6 +31,7 @@ mongoose
 app.use("/api/auth", authRouter);
 app.use("/api/users", userRouter);
 app.use("/api/posts", postRouter);
+app.use("/api/upload", uploadRouter)
 
 // Localサーバーを立ち上げ
 app.listen(PORT, () => console.log("Server is running 😎"));

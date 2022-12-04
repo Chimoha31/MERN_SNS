@@ -8,7 +8,7 @@ import { AuthContext } from "../../state/AuthContext";
 
 const Topbar = () => {
   const { user } = useContext(AuthContext);
-  console.log(user);
+  // console.log(user);
   const PUBLIC_FOLDER = process.env.REACT_APP_PUBLIC_FOLDER;
 
   return (

@@ -1,14 +1,33 @@
-import React, { useContext } from "react";
+import React, { useContext, useRef, useState } from "react";
 import "../share/Share.css";
 import ImageIcon from "@mui/icons-material/Image";
 import GifBoxIcon from "@mui/icons-material/GifBox";
 import FaceIcon from "@mui/icons-material/Face";
 import AnalyticsIcon from "@mui/icons-material/Analytics";
 import { AuthContext } from "../../state/AuthContext";
+import axios from "axios";
 
 const Share = () => {
-  const { user } = useContext(AuthContext);
   const PUBLIC_FOLDER = process.env.REACT_APP_PUBLIC_FOLDER;
+  const { user } = useContext(AuthContext);
+  const shareDesc = useRef();
+  const [file, setFile] = useState(null);
+ 
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    const newPost = {
+      userId: user._id,
+      desc: shareDesc.current.value,
+    };
+    try {
+      await axios.post(`/posts`, newPost);
+      window.location.reload();
+    } catch (err) {
+      console.loog(err);
+    }
+  };
 
   return (
     <div className="share">
@@ -27,16 +46,24 @@ const Share = () => {
             type="text"
             className="shareInput"
             placeholder="What are you doing now?"
+            ref={shareDesc}
           />
         </div>
         <hr className="shareHr" />
 
-        <div className="shareButtons">
+        <form className="shareButtons" onSubmit={(e) => handleSubmit(e)}>
           <div className="shareOptions">
-            <div className="shareOptions">
+            <label className="shareOptions" htmlFor="file">
               <ImageIcon className="shareIcon" htmlColor="blue" />
               <span className="shareOptionText">Picture</span>
-            </div>
+              <input
+                type="file"
+                id="file"
+                accept=".png, .jpg, .jpeg, .JPG"
+                style={{ display: "none" }}
+                onChange={(e) => setFile(e.target.files[0])}
+              />
+            </label>
             <div className="shareOptions">
               <GifBoxIcon className="shareIcon" htmlColor="hotpink" />
               <span className="shareOptionText">GIF</span>
@@ -50,8 +77,10 @@ const Share = () => {
               <span className="shareOptionText">Analytics</span>
             </div>
           </div>
-          <button className="shareButton">Share</button>
-        </div>
+          <button className="shareButton" type="submit">
+            Share
+          </button>
+        </form>
       </div>
     </div>
   );
