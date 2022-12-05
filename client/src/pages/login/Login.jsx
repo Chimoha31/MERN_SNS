@@ -1,4 +1,5 @@
 import React, { useContext, useRef } from "react";
+import { useNavigate } from "react-router-dom";
 import { loginCall } from "../../actionVCalls";
 import { AuthContext } from "../../state/AuthContext";
 import "./Login.css";
@@ -8,6 +9,7 @@ const Login = () => {
   const password = useRef();
   // console.log(email);
   const { user, isFetching, error, dispatch } = useContext(AuthContext);
+  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -50,7 +52,12 @@ const Login = () => {
             />
             <button className="loginButton">Login</button>
             <span className="loginForgot">Forgot your password ?</span>
-            <button className="loginResisterButton">Create account</button>
+            <button
+              className="loginResisterButton"
+              onClick={() => navigate("/resister")}
+            >
+              Create account
+            </button>
           </form>
         </div>
       </div>

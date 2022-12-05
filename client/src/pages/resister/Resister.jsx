@@ -75,7 +75,12 @@ const Resister = () => {
               Sign Up
             </button>
             {/* <span className="resisterForgot">You already have an account ?</span> */}
-            <button className="loginResisterButton">Login here</button>
+            <button
+              className="loginResisterButton"
+              onClick={() => navigate("/login")}
+            >
+              Login here
+            </button>
           </form>
         </div>
       </div>
