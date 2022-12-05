@@ -7,11 +7,12 @@ const storage = multer.diskStorage({
     cb(null, "public/images");
   },
   filename: (req, file, cb) => {
-    cb(null, file.originalname)
+    cb(null, req.body.name);
+    // cb(null, file.originalname)
   },
 });
 
-const upload = multer({storage});
+const upload = multer({ storage });
 // API for uploading image
 router.post("/", upload.single("file"), (req, res) => {
   try {

@@ -1,6 +1,7 @@
 const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
+const path = require("path");
 require("dotenv").config();
 const PORT = 8000;
 
@@ -15,7 +16,7 @@ app.get("/", (req, res) => {
 const authRouter = require("./router/auth");
 const userRouter = require("./router/users");
 const postRouter = require("./router/posts");
-const uploadRouter = require("./router/upload")
+const uploadRouter = require("./router/upload");
 
 // Connect MongoDB
 mongoose
@@ -28,10 +29,12 @@ mongoose
   });
 
 // Middleware
+app.use("/images", express.static(path.join(__dirname, "public/images")));
 app.use("/api/auth", authRouter);
 app.use("/api/users", userRouter);
 app.use("/api/posts", postRouter);
-app.use("/api/upload", uploadRouter)
+app.use("/api/upload", uploadRouter);
+
 
 // Localサーバーを立ち上げ
 app.listen(PORT, () => console.log("Server is running 😎"));

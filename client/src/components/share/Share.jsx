@@ -12,7 +12,6 @@ const Share = () => {
   const { user } = useContext(AuthContext);
   const shareDesc = useRef();
   const [file, setFile] = useState(null);
- 
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -21,6 +20,24 @@ const Share = () => {
       userId: user._id,
       desc: shareDesc.current.value,
     };
+
+    if (file) {
+      // FormDataオブジェクトとは、サーバーにデータを送信する際に使用するオブジェクト。ユーザーが入力するフォームデータや、任意のデータをサーバーに送信できる。実際の値はキーと値のペア。
+      // FormData オブジェクトの使い方=> newキーワードでインスタンスを作成し、appendメソッドでキーと値を追加。
+      // var formData = new FormData();
+      // formData.append("キー", "値");
+      const data = new FormData(); //keyとvalueを持つ
+      const fileName = Date.now() + file.name; //file名が重複しないようにDate.now()を付けて差別化図る
+      data.append("name", fileName);
+      data.append("file", file);
+      newPost.img = fileName;
+      try {
+        await axios.post(`/upload`, data);
+      } catch (err) {
+        console.log(err);
+      }
+    }
+
     try {
       await axios.post(`/posts`, newPost);
       window.location.reload();
